@@ -1,9 +1,22 @@
-const MAX_PHOTOS = 25;
-const MIN_LIKES = 15;
-const MAX_LIKES = 200;
-const MAX_COMMENTS = 30;
-// const MIN_AVATARS = 1;
-// const MAX_AVATARS = 6;
+const Photos = {
+  MIN: 1,
+  MAX: 25
+};
+
+const Likes = {
+  MIN: 15,
+  MAX: 200,
+};
+
+const Comments = {
+  MIN: 0,
+  MAX: 30
+};
+
+const Avatars = {
+  MIN: 1,
+  MAX: 6
+};
 
 //array of messages which should be stated by commentators
 const MESSAGES = [
@@ -51,8 +64,7 @@ const DESCRIPTIONS = [
 const getRandomNumber = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
+  return Math.floor(Math.random() * (upper - lower + 1) + lower);
 };
 
 //getting random element from stated array
@@ -69,28 +81,28 @@ const getIDGenerator = (min, max) => {
   };
 };
 
-const photoID = getIDGenerator();
-const commentID = getIDGenerator();
-const photoNumberURL = getIDGenerator();
+const photoID = getIDGenerator(0, Photos.MAX);
+const commentID = getIDGenerator(0, Comments.MAX);
+const photoNumberURL = getIDGenerator(0, Photos.MAX);
 
 //creating random comment;
 const createComment = () => ({
   id: commentID(),
-  avatar: `img/avatar-${ getRandomNumber(1, 6)}.svg`,
+  avatar: img/avatar-${ getRandomNumber(Avatars.MIN, Avatars.MAX)}.svg,
   message: getRandomArrayEllement(MESSAGES),
   name: getRandomArrayEllement(NAMES)});
 
 //creating random photo object
 const createPhoto = () => ({
   id: photoID(),
-  url: `photos/${photoNumberURL()}.jpg`,
+  url: photos/${photoNumberURL()}.jpg,
   description: getRandomArrayEllement(DESCRIPTIONS),
-  likes: getRandomNumber(MIN_LIKES, MAX_LIKES),
-  comments: Array.from({length: getRandomNumber(0, MAX_COMMENTS)}, createComment),}
+  likes: getRandomNumber(Likes.MIN, Likes.MAX),
+  comments: Array.from({length: getRandomNumber(0, Avatars.MAX)}, createComment),}
 );
 
-const randomPhotos = () => Array.from({length:MAX_PHOTOS}, createPhoto);
+const randomPhotos = Array.from({length:Photos.MAX}, createPhoto);
 
 randomPhotos();
 
-// console.log(randomPhotos());
+// console.log(randomPhotos);

@@ -1,4 +1,5 @@
-import { getIDGenerator, getRandomArrayEllement, getRandomNumber } from './util';
+import { getRandomNumber, getRandomArrayEllement, getIDGenerator } from './util.js';
+
 
 //array of messages which should be stated by commentators
 const MESSAGES = [

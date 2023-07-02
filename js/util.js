@@ -1,3 +1,5 @@
+
+
 //getting random number from stated range
 const getRandomNumber = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));

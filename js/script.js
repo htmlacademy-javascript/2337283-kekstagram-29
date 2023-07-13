@@ -43,34 +43,34 @@ const DESCRIPTIONS = [
   'Некоторые виды просто потрясают воспаление красотой и великолепием.'
 ];
 
-const Photos = {
+const PHOTOS = {
   MIN: 1,
   MAX: 25
 };
 
-const Likes = {
+const LIKES = {
   MIN: 15,
   MAX: 200,
 };
 
-const Comments = {
+const COMMENTS = {
   MIN: 0,
   MAX: 30
 };
 
-const Avatars = {
+const AVATARS = {
   MIN: 1,
   MAX: 6
 };
 
-const photoID = getIDGenerator(1, Photos.MAX);
-const commentID = getIDGenerator(1, Comments.MAX);
-const photoNumberURL = getIDGenerator(1, Photos.MAX);
+const photoID = getIDGenerator(1, PHOTOS.MAX);
+const commentID = getIDGenerator(1, COMMENTS.MAX);
+const photoNumberURL = getIDGenerator(1, PHOTOS.MAX);
 
 //creating random comment;
 const createComment = () => ({
   id: commentID(),
-  avatar: `img/avatar-${getRandomNumber(Avatars.MIN, Avatars.MAX)}.svg`,
+  avatar: `img/avatar-${getRandomNumber(AVATARS.MIN, AVATARS.MAX)}.svg`,
   message: getRandomArrayEllement(MESSAGES),
   name: getRandomArrayEllement(NAMES)});
 
@@ -79,10 +79,10 @@ const createPhoto = () => ({
   id: photoID(),
   url: `photos/${photoNumberURL()}.jpg`,
   description: getRandomArrayEllement(DESCRIPTIONS),
-  likes: getRandomNumber(Likes.MIN, Likes.MAX),
-  comments: Array.from({length: getRandomNumber(0, Avatars.MAX)}, createComment),}
+  likes: getRandomNumber(LIKES.MIN, LIKES.MAX),
+  comments: Array.from({length: getRandomNumber(0, AVATARS.MAX)}, createComment),}
 );
 
-const randomPhotos = () => Array.from({length:Photos.MAX}, createPhoto);
+const randomPhotos = () => Array.from({length:PHOTOS.MAX}, createPhoto);
 // randomPhotos();
 export {randomPhotos};

@@ -1,3 +1,4 @@
 import {randomPhotos} from './script.js';
+import { renderThumbnails } from './thumbnails.js';
 
-randomPhotos();
+renderThumbnails(randomPhotos());

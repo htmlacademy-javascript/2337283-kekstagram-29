@@ -1,5 +1,3 @@
-// import { showBigPicture, renderPicturesDetailes } from './big-picture.js';
-
 const thumbnailsTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const thumbnailsList = document.querySelector('.pictures');
 

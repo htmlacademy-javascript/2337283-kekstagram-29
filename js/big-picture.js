@@ -12,7 +12,7 @@ const createComment = ({ avatar, name, message }) => {
   const comment = commentElement.cloneNode(true);
   comment.querySelector('.social__picture').src = avatar;
   comment.querySelector('.social__picture').alt = name;
-  comment.querySelector('.social__text').src = message;
+  comment.querySelector('.social__text').textContent = message;
 
   return comment;
 };
@@ -38,16 +38,17 @@ const renderPicturesDetailes = ({ url, likes, description }) => {
   bigPictureElement.querySelector('.big-picture__img img').src = url;
   bigPictureElement.querySelector('.likes-count').textContent = likes;
   bigPictureElement.querySelector('.big-picture__img img').alt = description;
-  bigPictureElement.querySelector('.social-caption').textContent = description;
-  renderComments();
+  bigPictureElement.querySelector('.social__caption').textContent = description;
 };
 
-const showBigPicture = () => {
+const showBigPicture = (data) => {
   bigPictureElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
-  commentsLoaderElement.classList.remove('hidden');
-  commentCountElement.classList.remove('hidden');
+  commentsLoaderElement.classList.add('hidden');
+  commentCountElement.classList.add('hidden');
   document.addEventListener('keydown', onDocumentKeydown);
+  renderPicturesDetailes(data);
+  renderComments(data.comments);
 };
 
 function closeBigPicture () {

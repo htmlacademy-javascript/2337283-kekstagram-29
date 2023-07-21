@@ -1,4 +1,5 @@
 import {randomPhotos} from './script.js';
-import { renderThumbnails } from './thumbnails.js';
+// import './big-picture.js';
+import { renderGallery } from './gallery.js';
 
-renderThumbnails(randomPhotos());
+renderGallery(randomPhotos());

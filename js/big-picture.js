@@ -61,7 +61,6 @@ const showBigPicture = (data) => {
   bigPictureElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
   commentsLoaderElement.classList.add('hidden');
-  // commentCountElement.classList.add('hidden');
   document.addEventListener('keydown', onDocumentKeydown);
   renderPicturesDetailes(data);
   comments = data.comments;

@@ -1,7 +1,5 @@
 import { getRandomNumber, getRandomArrayEllement, getIDGenerator } from './util.js';
 
-
-//array of messages which should be stated by commentators
 const MESSAGES = [
   'Всё отлично',
   'В целом все неплохо, но не все',
@@ -10,11 +8,8 @@ const MESSAGES = [
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
 
-//names
 const NAMES = ['Аврора', 'Эмилия','Габриель', 'Исла', 'Зоя', 'Адриана'];
 
-
-//descriptions
 const DESCRIPTIONS = [
   'Невероятный вид из окна!',
   'Бесконечное поле солнечных цветов',
@@ -40,7 +35,7 @@ const DESCRIPTIONS = [
   'Постановка сцены, которая действительно оживает перед глазами.',
   'Очень красиво такой снимок в портретном формате сделан.',
   'Небольшое маленькое кафе, полное аромата свежеиспеченной выпечки.',
-  'Некоторые виды просто потрясают воспаление красотой и великолепием.'
+  'Некоторые виды просто потрясают воображение красотой и великолепием.'
 ];
 
 const PHOTOS = {
@@ -67,14 +62,12 @@ const photoID = getIDGenerator(1, PHOTOS.MAX);
 const commentID = getIDGenerator(1, COMMENTS.MAX);
 const photoNumberURL = getIDGenerator(1, PHOTOS.MAX);
 
-//creating random comment;
 const createComment = () => ({
   id: commentID(),
   avatar: `img/avatar-${getRandomNumber(AVATARS.MIN, AVATARS.MAX)}.svg`,
   message: getRandomArrayEllement(MESSAGES),
   name: getRandomArrayEllement(NAMES)});
 
-//creating random photo object
 const createPhoto = () => ({
   id: photoID(),
   url: `photos/${photoNumberURL()}.jpg`,

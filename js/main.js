@@ -1,4 +1,4 @@
-import {randomPhotos} from './script.js';
-import { renderThumbnails } from './thumbnails.js';
+import { randomPhotos } from './script.js';
+import { renderGallery } from './gallery.js';
 
-renderThumbnails(randomPhotos());
+renderGallery(randomPhotos());

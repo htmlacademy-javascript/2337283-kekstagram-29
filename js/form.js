@@ -19,6 +19,7 @@ const onDocumentKeydown = (evt) => {
     closePictureUpload();
   }
 };
+
 // @ts-ignore
 const pristine = new Pristine (uploadForm, {
   classTo: 'img-upload__field-wrapper',
@@ -49,6 +50,11 @@ function getErrorMessage() {
 
 pristine.addValidator(hashtagInput, validateHashtags, getErrorMessage);
 
+uploadForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  pristine.validate();
+});
+
 const onCancelButtonClick = () => {
   closePictureUpload();
 };
@@ -71,7 +77,4 @@ function closePictureUpload() {
 
 uplodeFileInput.addEventListener('change', openPictureUpload);
 
-uploadForm.addEventListener('change', (evt) => {
-  evt.preventDefault();
-  pristine.validate();
-});
+

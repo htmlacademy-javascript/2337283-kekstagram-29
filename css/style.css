@@ -366,6 +366,22 @@ main {
   outline: auto 5px highlight;
 }
 
+.form__error {
+  color: #fff;
+  background-color: red;
+  border-radius: 5px;
+  margin-top: 0;
+  margin-bottom: -20px;
+}
+
+.text__hashtags + .form__error {
+  color: #fff;
+  background-color: red;
+  border-radius: 5px;
+  margin-top: -20px;
+  margin-bottom: 0;
+}
+
 
 /* Окно для редактирования изображения
    ========================================================================== */

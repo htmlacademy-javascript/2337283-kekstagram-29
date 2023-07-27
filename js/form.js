@@ -20,7 +20,6 @@ const onDocumentKeydown = (evt) => {
   }
 };
 
-// @ts-ignore
 const pristine = new Pristine (uploadForm, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
@@ -76,5 +75,3 @@ function closePictureUpload() {
 }
 
 uplodeFileInput.addEventListener('change', openPictureUpload);
-
-

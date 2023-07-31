@@ -12,6 +12,7 @@ const cancelButton = uploadForm.querySelector('.img-upload__cancel');
 const hashtagInput = uploadForm.querySelector('.text__hashtags');
 const descriptionField = uploadForm.querySelector('.text__description');
 const submitButton = uploadForm.querySelector('.img-upload__submit');
+const isErrorMessageShown = () => Boolean(document.querySelector('.error'));
 let errorMessage;
 
 const SubmitButtonText = {
@@ -22,7 +23,7 @@ const SubmitButtonText = {
 const isTextFieldFocused = () => document.activeElement === hashtagInput || document.activeElement === descriptionField;
 
 const onDocumentKeydown = (evt) => {
-  if (isEscapeKey(evt) && !isTextFieldFocused()) {
+  if (isEscapeKey(evt) && !isTextFieldFocused() && !isErrorMessageShown()) {
     evt.preventDefault();
     closePictureUpload();
   }

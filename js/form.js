@@ -11,7 +11,13 @@ const uplodeFileInput = uploadForm.querySelector('.img-upload__input');
 const cancelButton = uploadForm.querySelector('.img-upload__cancel');
 const hashtagInput = uploadForm.querySelector('.text__hashtags');
 const descriptionField = uploadForm.querySelector('.text__description');
+const submitButton = uploadForm.querySelector('.img-upload__submit');
 let errorMessage;
+
+const SubmitButtonText = {
+  IDLE: 'Опубликовать',
+  SENDING: 'Загружаем...'
+};
 
 const isTextFieldFocused = () => document.activeElement === hashtagInput || document.activeElement === descriptionField;
 
@@ -49,6 +55,29 @@ function getErrorMessage() {
   return errorMessage;
 }
 
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = SubmitButtonText.SENDING;
+};
+
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = SubmitButtonText.IDLE;
+};
+
+const setOnFormSubmit = (cb) => {
+  uploadForm.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+    const isValid = pristine.validate();
+
+    if (isValid) {
+      blockSubmitButton();
+      await cb(new FormData(uploadForm));
+      unblockSubmitButton();
+    }
+  });
+};
+
 pristine.addValidator(hashtagInput, validateHashtags, getErrorMessage);
 
 uploadForm.addEventListener('submit', (evt) => {
@@ -79,4 +108,6 @@ function closePictureUpload() {
   cancelButton.removeEventListener('click', onCancelButtonClick);
 }
 
-uplodeFileInput.addEventListener('change', openPictureUpload);
+uplodeFileInput.addEventListener('change', openPictureUpload, setOnFormSubmit);
+
+export { closePictureUpload, setOnFormSubmit };

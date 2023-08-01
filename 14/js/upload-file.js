@@ -1,12 +1,13 @@
+const FILE_TYPES = ['.jpg', '.jpeg', '.png'];
+
 const inputLoadPicture = document.querySelector('.img-upload__start input[type=file]');
 const addressImage = document.querySelector('.img-upload__preview').querySelector('img');
 const backgroundImageFilters = document.querySelectorAll('.effects__preview');
-const FILE_TYPES = ['.jpg', '.jpeg', '.png'];
 
 const uploadedImage = () => {
   const file = inputLoadPicture.files[0];
   const fileName = file.name.toLowerCase();
-  const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
+  const matches = FILE_TYPES.some((fileExt) => fileName.endsWith(fileExt));
 
   if (matches) {
     addressImage.src = URL.createObjectURL(file);
@@ -17,4 +18,8 @@ const uploadedImage = () => {
   }
 };
 
-inputLoadPicture.addEventListener('change', uploadedImage);
+const onInputLoadClick = () => {
+  inputLoadPicture.addEventListener('change', uploadedImage);
+};
+
+export { onInputLoadClick };

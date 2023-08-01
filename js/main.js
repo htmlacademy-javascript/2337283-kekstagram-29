@@ -4,8 +4,9 @@ import { setOnFormSubmit, closePictureUpload } from './form.js';
 import { showErrorMessage, showSuccessMessage } from './message.js';
 import { showAlert, debounce } from './util.js';
 import { initFilter, getSortedPictures } from './filters.js';
-import './upload-file.js';
+import { onInputLoadClick } from './upload-file.js';
 
+onInputLoadClick();
 setOnFormSubmit(async (data) => {
   try {
     await sendData(data);

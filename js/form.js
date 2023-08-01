@@ -12,7 +12,6 @@ const cancelButton = uploadForm.querySelector('.img-upload__cancel');
 const hashtagInput = uploadForm.querySelector('.text__hashtags');
 const descriptionField = uploadForm.querySelector('.text__description');
 const submitButton = uploadForm.querySelector('.img-upload__submit');
-const isErrorMessageShown = () => Boolean(document.querySelector('.error'));
 let errorMessage;
 
 const SubmitButtonText = {
@@ -20,7 +19,14 @@ const SubmitButtonText = {
   SENDING: 'Загружаем...'
 };
 
+const ErrorText = {
+  INVALID_COUNT: `Максимум ${HASHTAGS_MAX_COUNT} хэштегов`,
+  NOT_UNIQUE: 'Хэш-теги не должны повторяться',
+  INVALID_HASHTAG: 'Неправильный хэштег',
+};
+
 const isTextFieldFocused = () => document.activeElement === hashtagInput || document.activeElement === descriptionField;
+const isErrorMessageShown = () => Boolean(document.querySelector('.error'));
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt) && !isTextFieldFocused() && !isErrorMessageShown()) {
@@ -33,22 +39,22 @@ const pristine = new Pristine (uploadForm, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'form__error'
-}, false);
+});
 
 const validateHashtags = (value) => {
   const createHashtagString = value.toLowerCase().trim().split(' ').filter((item) => item);
   const allHashtags = new Set(createHashtagString);
 
   if (createHashtagString.length > HASHTAGS_MAX_COUNT) {
-    errorMessage = 'Максимум пять хештегов';
+    errorMessage = ErrorText.INVALID_COUNT;
     return false;
   }
   if (createHashtagString.length !== allHashtags.size) {
-    errorMessage = 'Хэш-теги не должны повторяться';
+    errorMessage = ErrorText.NOT_UNIQUE;
     return false;
   }
 
-  errorMessage = 'Хэш-тег должен начинаться с # и может содержать только буквы и цифры';
+  errorMessage = ErrorText.INVALID_HASHTAG;
   return createHashtagString.every((hashtag) => HASHTAG_REG_EXP.test(hashtag));
 };
 

@@ -4,6 +4,7 @@ import { setOnFormSubmit, closePictureUpload } from './form.js';
 import { showErrorMessage, showSuccessMessage } from './message.js';
 import { showAlert, debounce } from './util.js';
 import { initFilter, getSortedPictures } from './filters.js';
+import './upload-file.js';
 
 setOnFormSubmit(async (data) => {
   try {

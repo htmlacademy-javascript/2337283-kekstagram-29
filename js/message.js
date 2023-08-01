@@ -3,7 +3,7 @@ import {isEscapeKey} from './util.js';
 const successTemplate = document.querySelector('#success').content.querySelector('.success');
 const errorTemplate = document.querySelector('#error').content.querySelector('.error');
 
-function showSuccess() {
+function showSuccessMessage() {
   const messageSuccessTemplate = successTemplate.cloneNode(true);
   document.body.append(messageSuccessTemplate);
   const successButton = messageSuccessTemplate.querySelector('.success__button');
@@ -21,7 +21,7 @@ function showSuccess() {
   });
 }
 
-function showError() {
+function showErrorMessage() {
   const messageErrorTemplate = errorTemplate.cloneNode(true);
   document.body.append(messageErrorTemplate);
   document.addEventListener('keydown', onDocumentKeydown);
@@ -55,4 +55,4 @@ function onDocumentKeydown(evt) {
   }
 }
 
-export {showSuccess, showError};
+export {showSuccessMessage, showErrorMessage};

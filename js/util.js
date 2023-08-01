@@ -5,7 +5,7 @@ const showAlert = (message) => {
   alert.style.zIndex = '100';
   alert.style.position = 'absolute';
   alert.style.left = '0';
-  alert.style.top = '30%';
+  alert.style.top = '0';
   alert.style.right = '0';
   alert.style.padding = '10px 3px';
   alert.style.fontSize = '30px';

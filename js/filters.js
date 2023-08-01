@@ -6,6 +6,7 @@ const Filter = {
 };
 
 const filterContainer = document.querySelector('.img-filters');
+// const imgButtonActive = filterContainer.querySelector('.');
 let currentFilter = Filter.DEFAULT;
 let sortedPhotos = [];
 
@@ -25,7 +26,7 @@ const getSortedPictures = () => {
 
 const setOnFilterClick = (callback) => {
   filterContainer.addEventListener('click', (evt) => {
-    if (!evt.target.classList.contains('img-filter__button')) {
+    if (!evt.target.classList.contains('img-filters__button')) {
       return;
     }
 
@@ -33,10 +34,10 @@ const setOnFilterClick = (callback) => {
     if (clickedButton.id === currentFilter) {
       return;
     }
-    filterContainer.querySelector('img-filters__button--active').classList.remove('img-filters__button--active');
+    filterContainer.querySelector('.img-filters__button--active').classList.remove('img-filters__button--active');
     clickedButton.classList.add('img-filters__button--active');
     currentFilter = clickedButton.id;
-    callback(getSortedPictures);
+    callback(getSortedPictures());
   });
 };
 

@@ -7,11 +7,11 @@ function showSuccessMessage() {
   const messageSuccessTemplate = successTemplate.cloneNode(true);
   document.body.append(messageSuccessTemplate);
   const successButton = messageSuccessTemplate.querySelector('.success__button');
-  document.addEventListener('keydown', closeDocumentKeydown);
+  document.addEventListener('keydown', onDocumentKeydown);
 
   successButton.addEventListener('click', () => {
     messageSuccessTemplate.remove();
-    document.removeEventListener('keydown', closeDocumentKeydown);
+    document.removeEventListener('keydown', onDocumentKeydown);
   });
 
   document.addEventListener('click', (evt) => {
@@ -24,12 +24,12 @@ function showSuccessMessage() {
 function showErrorMessage() {
   const messageErrorTemplate = errorTemplate.cloneNode(true);
   document.body.append(messageErrorTemplate);
-  document.addEventListener('keydown', closeDocumentKeydown);
+  document.addEventListener('keydown', onDocumentKeydown);
   const errorButton = messageErrorTemplate.querySelector('.error__button');
 
   errorButton.addEventListener('click', () => {
     messageErrorTemplate.remove();
-    document.removeEventListener('keydown', closeDocumentKeydown);
+    document.removeEventListener('keydown', onDocumentKeydown);
   });
 
   document.addEventListener('click', (evt) => {
@@ -40,7 +40,7 @@ function showErrorMessage() {
 }
 
 
-function closeDocumentKeydown(evt) {
+function onDocumentKeydown(evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     const messageSuccess = document.querySelector('.success');
@@ -51,7 +51,7 @@ function closeDocumentKeydown(evt) {
     if (messageError) {
       messageError.remove();
     }
-    document.removeEventListener('keydown', closeDocumentKeydown);
+    document.removeEventListener('keydown', onDocumentKeydown);
   }
 }
 

@@ -89,7 +89,7 @@ const resetFilter = () => {
   imagePreview.style.filter = 'none';
 };
 
-const clickOnEffectsList = (evt) => {
+const onEffectsListClick = (evt) => {
   if (evt.target.classList.contains('effects__radio')) {
     currentEffect = EFFECTS_SETUPS.find((effect) => effect.filter === evt.target.value);
     imagePreview.classfilter = `img-upload__preview effects__preview--${currentEffect.filter}`;
@@ -104,7 +104,7 @@ const clickOnEffectsList = (evt) => {
   }
 };
 
-const updateOnSlider = () => {
+const onSliderUpdate = () => {
   const sliderValue = levelSlider.noUiSlider.get();
   levelInput.value = sliderValue;
   imagePreview.style.filter = `${currentEffect.style}(${sliderValue}${currentEffect.unit})`;
@@ -123,7 +123,7 @@ noUiSlider.create(levelSlider, {
   start: DEFAULT_EFFECT.min,
 });
 
-effectsList.addEventListener('click', clickOnEffectsList);
-levelSlider.noUiSlider.on('update', updateOnSlider);
+effectsList.addEventListener('click', onEffectsListClick);
+levelSlider.noUiSlider.on('update', onSliderUpdate);
 
 export { resetFilter, resetSlider };

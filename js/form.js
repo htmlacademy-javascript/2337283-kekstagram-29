@@ -28,7 +28,7 @@ const ErrorText = {
 const isTextFieldFocused = () => document.activeElement === hashtagInput || document.activeElement === descriptionField;
 const isErrorMessageShown = () => Boolean(document.querySelector('.error'));
 
-const closeDocumentKeydown = (evt) => {
+const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt) && !isTextFieldFocused() && !isErrorMessageShown()) {
     evt.preventDefault();
     closePictureUpload();
@@ -92,15 +92,15 @@ uploadForm.addEventListener('submit', (evt) => {
   pristine.validate();
 });
 
-const clickOnCancelButton = () => {
+const onCancelButtonClick = () => {
   closePictureUpload();
 };
 
 function openPictureUpload() {
   body.classList.add('modal-open');
   pictureEdit.classList.remove('hidden');
-  document.addEventListener('keydown', closeDocumentKeydown);
-  cancelButton.addEventListener('click', clickOnCancelButton);
+  document.addEventListener('keydown', onDocumentKeydown);
+  cancelButton.addEventListener('click', onCancelButtonClick);
 }
 
 function closePictureUpload() {
@@ -111,8 +111,8 @@ function closePictureUpload() {
   resetSlider();
   body.classList.remove('modal-open');
   pictureEdit.classList.add('hidden');
-  document.removeEventListener('keydown', closeDocumentKeydown);
-  cancelButton.removeEventListener('click', clickOnCancelButton);
+  document.removeEventListener('keydown', onDocumentKeydown);
+  cancelButton.removeEventListener('click', onCancelButtonClick);
 }
 
 uplodeFileInput.addEventListener('change', openPictureUpload, setOnFormSubmit);

@@ -46,7 +46,7 @@ const renderComments = () => {
   commentsShownCount.textContent = commentsShown;
 };
 
-const closeDocumentKeydown = (evt) => {
+const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     closeBigPicture();
@@ -64,7 +64,7 @@ const showBigPicture = (data) => {
   bigPicture.classList.remove('hidden');
   body.classList.add('modal-open');
   commentsLoaderButton.classList.add('hidden');
-  document.addEventListener('keydown', closeDocumentKeydown);
+  document.addEventListener('keydown', onDocumentKeydown);
   renderPicturesDetailes(data);
   comments = data.comments;
   if (comments.length > 0) {
@@ -75,19 +75,19 @@ const showBigPicture = (data) => {
 function closeBigPicture () {
   bigPicture.classList.add('hidden');
   body.classList.remove('modal-open');
-  document.removeEventListener('keydown', closeDocumentKeydown);
+  document.removeEventListener('keydown', onDocumentKeydown);
   commentsShown = 0;
 }
 
-const clickOnCancelButton = () => {
+const onCancelElementClick = () => {
   closeBigPicture();
 };
 
-const clickOnCommentsLoader = () => {
+const onCommentsLoaderClick = () => {
   renderComments();
 };
 
-cancelButton.addEventListener('click', clickOnCancelButton);
-commentsLoaderButton.addEventListener('click', clickOnCommentsLoader);
+cancelButton.addEventListener('click', onCancelElementClick);
+commentsLoaderButton.addEventListener('click', onCommentsLoaderClick);
 
 export { showBigPicture, renderPicturesDetailes };

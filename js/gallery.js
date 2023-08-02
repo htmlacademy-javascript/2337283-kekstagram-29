@@ -5,7 +5,7 @@ const container = document.querySelector('.pictures');
 
 let pictures = [];
 
-const clickOnContainer = (evt) => {
+const onContainerClick = (evt) => {
   const thumbnail = evt.target.closest('[data-thumbnail-id]');
   if (!thumbnail) {
     return;
@@ -19,7 +19,7 @@ const clickOnContainer = (evt) => {
 const renderGallery = (currentPictures) => {
   pictures = currentPictures;
   renderThumbnails(pictures, container);
-  container.addEventListener('click', clickOnContainer);
+  container.addEventListener('click', onContainerClick);
 };
 
 export { renderGallery };

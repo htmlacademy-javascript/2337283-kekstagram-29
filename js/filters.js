@@ -6,7 +6,6 @@ const Filter = {
 };
 
 const filterContainer = document.querySelector('.img-filters');
-// const imgButtonActive = filterContainer.querySelector('.');
 let currentFilter = Filter.DEFAULT;
 let sortedPhotos = [];
 

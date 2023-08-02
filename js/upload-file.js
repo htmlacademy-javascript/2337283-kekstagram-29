@@ -1,4 +1,4 @@
-const FILE_TYPES = ['.jpg', '.jpeg', '.png'];
+const FILES_TYPES = ['.jpg', '.jpeg', '.png'];
 
 const inputLoadPicture = document.querySelector('.img-upload__start input[type=file]');
 const addressImage = document.querySelector('.img-upload__preview').querySelector('img');
@@ -7,7 +7,7 @@ const backgroundImageFilters = document.querySelectorAll('.effects__preview');
 const uploadedImage = () => {
   const file = inputLoadPicture.files[0];
   const fileName = file.name.toLowerCase();
-  const matches = FILE_TYPES.some((fileExt) => fileName.endsWith(fileExt));
+  const matches = FILES_TYPES.some((fileExt) => fileName.endsWith(fileExt));
 
   if (matches) {
     addressImage.src = URL.createObjectURL(file);
@@ -18,8 +18,8 @@ const uploadedImage = () => {
   }
 };
 
-const onInputLoadClick = () => {
+const clickOnInputLoad = () => {
   inputLoadPicture.addEventListener('change', uploadedImage);
 };
 
-export { onInputLoadClick };
+export { clickOnInputLoad };

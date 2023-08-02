@@ -1,4 +1,4 @@
-const EffectSetups = [
+const EFFECTS_SETUPS = [
   {
     filter: 'none',
     style: '',
@@ -49,7 +49,7 @@ const EffectSetups = [
   },
 ];
 
-const DEFAULT_EFFECT = EffectSetups[0];
+const DEFAULT_EFFECT = EFFECTS_SETUPS[0];
 
 const sliderContainer = document.querySelector('.effect-level');
 const levelSlider = document.querySelector('.effect-level__slider');
@@ -89,9 +89,9 @@ const resetFilter = () => {
   imagePreview.style.filter = 'none';
 };
 
-const onEffectsListClick = (evt) => {
+const clickOnEffectsList = (evt) => {
   if (evt.target.classList.contains('effects__radio')) {
-    currentEffect = EffectSetups.find((effect) => effect.filter === evt.target.value);
+    currentEffect = EFFECTS_SETUPS.find((effect) => effect.filter === evt.target.value);
     imagePreview.classfilter = `img-upload__preview effects__preview--${currentEffect.filter}`;
 
     updateSlider();
@@ -104,7 +104,7 @@ const onEffectsListClick = (evt) => {
   }
 };
 
-const onSliderUpdate = () => {
+const updateOnSlider = () => {
   const sliderValue = levelSlider.noUiSlider.get();
   levelInput.value = sliderValue;
   imagePreview.style.filter = `${currentEffect.style}(${sliderValue}${currentEffect.unit})`;
@@ -123,7 +123,7 @@ noUiSlider.create(levelSlider, {
   start: DEFAULT_EFFECT.min,
 });
 
-effectsList.addEventListener('click', onEffectsListClick);
-levelSlider.noUiSlider.on('update', onSliderUpdate);
+effectsList.addEventListener('click', clickOnEffectsList);
+levelSlider.noUiSlider.on('update', updateOnSlider);
 
 export { resetFilter, resetSlider };

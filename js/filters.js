@@ -40,10 +40,10 @@ const setOnFilterClick = (callback) => {
   });
 };
 
-const initFilter = (loadedPictures, callback) => {
+const initializeFilter = (loadedPictures, callback) => {
   filterContainer.classList.remove('img-filters--inactive');
   sortedPhotos = [...loadedPictures];
   setOnFilterClick(callback);
 };
 
-export { initFilter, getSortedPictures };
+export { initializeFilter, getSortedPictures };

@@ -1,4 +1,4 @@
-const EffectSetups = [
+const EFFECTS_SETUPS = [
   {
     filter: 'none',
     style: '',
@@ -49,7 +49,7 @@ const EffectSetups = [
   },
 ];
 
-const DEFAULT_EFFECT = EffectSetups[0];
+const DEFAULT_EFFECT = EFFECTS_SETUPS[0];
 
 const sliderContainer = document.querySelector('.effect-level');
 const levelSlider = document.querySelector('.effect-level__slider');
@@ -91,7 +91,7 @@ const resetFilter = () => {
 
 const onEffectsListClick = (evt) => {
   if (evt.target.classList.contains('effects__radio')) {
-    currentEffect = EffectSetups.find((effect) => effect.filter === evt.target.value);
+    currentEffect = EFFECTS_SETUPS.find((effect) => effect.filter === evt.target.value);
     imagePreview.classfilter = `img-upload__preview effects__preview--${currentEffect.filter}`;
 
     updateSlider();
